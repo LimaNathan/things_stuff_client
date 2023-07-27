@@ -1,5 +1,5 @@
 import 'package:asp/asp.dart';
-import 'package:things_stuff_client/core/exception/exceptions.dart';
+import 'package:things_stuff_client/src/core/exception/exceptions.dart';
 
 final globalLoaderState = Atom(
   false,

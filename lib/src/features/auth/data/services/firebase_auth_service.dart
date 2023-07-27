@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:things_stuff_client/features/auth/interactor/dto/email_credential_dto.dart';
-import 'package:things_stuff_client/features/auth/interactor/entities/tokenization.dart';
-import 'package:things_stuff_client/features/auth/interactor/service/auth_service.dart';
-import 'package:things_stuff_client/features/auth/interactor/states/auth_state.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/dto/email_credential_dto.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/entities/tokenization.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/service/auth_service.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/states/auth_state.dart';
 
 class FirebaseAuthService extends AuthService {
   final FirebaseAuth firebase;

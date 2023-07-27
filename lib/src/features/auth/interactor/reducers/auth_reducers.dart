@@ -1,7 +1,7 @@
 import 'package:asp/asp.dart';
-import 'package:things_stuff_client/features/auth/interactor/atoms/auth_atom.dart';
-import 'package:things_stuff_client/features/auth/interactor/service/auth_service.dart';
-import 'package:things_stuff_client/features/auth/interactor/states/auth_state.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/atoms/auth_atom.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/service/auth_service.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/states/auth_state.dart';
 
 class AuthReducers extends Reducer {
   final AuthService service;

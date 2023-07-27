@@ -1,4 +1,4 @@
-import 'package:things_stuff_client/features/auth/interactor/entities/tokenization.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/entities/tokenization.dart';
 
 sealed class AuthState {}
 

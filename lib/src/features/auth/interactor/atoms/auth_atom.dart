@@ -1,6 +1,6 @@
 import 'package:asp/asp.dart';
-import 'package:things_stuff_client/features/auth/interactor/dto/email_credential_dto.dart';
-import 'package:things_stuff_client/features/auth/interactor/states/auth_state.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/dto/email_credential_dto.dart';
+import 'package:things_stuff_client/src/features/auth/interactor/states/auth_state.dart';
 
 ///Atom
 final authState = Atom<AuthState>(
@@ -11,7 +11,7 @@ final authState = Atom<AuthState>(
 ///Actions
 final checkAuthAction = Atom.action(key: 'checkAuthAction');
 final loginWithEmailAction = Atom<EmailCredentialDto>(
-  EmailCredentialDto.empty(),
+  EmailCredentialDto(),
   key: 'loginWithEmail',
 );
 
