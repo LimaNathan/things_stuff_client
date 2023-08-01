@@ -11,10 +11,19 @@ class ShowingThings implements ThingsState {
   ShowingThings(this.things);
 }
 
+class ShowingOneThing implements ThingsState {
+  final ThingDTO thingDTO;
+  ShowingOneThing(this.thingDTO);
+}
+
 class CreatedThing implements ThingsState {
   final ThingDTO dto;
   CreatedThing(this.dto);
 }
+
+class ThingsErrorState implements ThingsState {}
+
+class DeleteThingSuccess implements ThingsState {}
 
 class NotCreatedThing implements ThingsState {
   final String message;

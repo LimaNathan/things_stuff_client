@@ -3,22 +3,27 @@ import 'package:things_stuff_client/src/features/things/interactor/dto/thing_dto
 import 'package:things_stuff_client/src/features/things/interactor/states/things_states.dart';
 
 ///Atom
-final atomState = Atom<ThingsState>(
+final thingState = Atom<ThingsState>(
   InitThing(),
   key: 'thingsState',
 );
 
 ///Action
 
-final getThings = Atom.action(key: 'getThings');
-final sendNewThings = Atom<ThingDTO>(
+final getThingsAction = Atom.action(key: 'getThings');
+final getOneThingAction = Atom<int?>(
+  null,
+  key: 'getOneThing',
+);
+
+final sendNewThingsAction = Atom<ThingDTO>(
   ThingDTO(),
   key: 'getThings',
 );
 
-final updateThings = Atom<ThingDTO>(
+final updateThingsAction = Atom<ThingDTO>(
   ThingDTO(),
   key: 'updateThings ',
 );
 
-final deleteThing = Atom<ThingDTO>(ThingDTO(), key: 'deleteThing');
+final deleteThingAction = Atom<ThingDTO>(ThingDTO(), key: 'deleteThing');

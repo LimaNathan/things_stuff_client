@@ -1,14 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:things_stuff_client/src/features/things/categories/models/category.dart';
+import 'package:things_stuff_client/src/features/things/categories/interactor/dto/category.dart';
+import 'package:things_stuff_client/src/features/things/interactor/entities/dto.dart';
 
-class ThingDTO {
+class ThingDTO extends DTO {
   int? id;
   String? name;
   String? image;
   double? approximateValue;
-  Category? category;
+  int? categoryId;
+  CategoriesDTO? category;
 
   ThingDTO();
 
@@ -17,14 +19,16 @@ class ThingDTO {
     String? name,
     String? image,
     double? approximateValue,
-    Category? category,
+    CategoriesDTO? category,
+    int? categoryId,
   }) {
     return ThingDTO()
       ..id = id ?? this.id
       ..name = name ?? this.name
       ..image = image ?? this.image
       ..approximateValue = approximateValue ?? this.approximateValue
-      ..category = category ?? this.category;
+      ..category = category ?? this.category
+      ..categoryId = categoryId ?? this.categoryId;
   }
 
   Map<String, dynamic> toMap() {
@@ -34,6 +38,7 @@ class ThingDTO {
       'image': image,
       'approximateValue': approximateValue,
       'category': category?.toMap(),
+      'categoryId': categoryId,
     };
   }
 
@@ -43,7 +48,9 @@ class ThingDTO {
       ..name = map['name'] as String
       ..image = map['image'] as String
       ..approximateValue = map['approximateValue'] as double
-      ..category = Category.fromMap(map['category'] as Map<String, dynamic>);
+      ..category =
+          CategoriesDTO.fromMap(map['category'] as Map<String, dynamic>)
+      ..categoryId = map['categoryId'];
   }
 
   String toJson() => json.encode(toMap());
@@ -53,7 +60,9 @@ class ThingDTO {
 
   @override
   String toString() {
-    return 'ThingModel(id: $id, name: $name, image: $image, approximateValue: $approximateValue, category: $category)';
+    return 'ThingModel(id: $id, name: $name, image: $image,'
+        ' approximateValue: $approximateValue, category: $category,'
+        ' categoryId: $categoryId)';
   }
 
   @override
@@ -64,7 +73,8 @@ class ThingDTO {
         other.name == name &&
         other.image == image &&
         other.approximateValue == approximateValue &&
-        other.category == category;
+        other.category == category &&
+        other.categoryId == categoryId;
   }
 
   @override
@@ -73,6 +83,7 @@ class ThingDTO {
         name.hashCode ^
         image.hashCode ^
         approximateValue.hashCode ^
-        category.hashCode;
+        category.hashCode ^
+        categoryId.hashCode;
   }
 }

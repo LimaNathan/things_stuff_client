@@ -22,13 +22,19 @@ class UnoImpl extends ApiService {
   @override
   Future delete(String url, {required int id}) async {
     try {
-      return await _uno.delete(
+      final response = await _uno.delete(
         url,
         params: {
           'id': '$id',
         },
         headers: await _getHeaders(),
       );
+
+      if (response.status == 200) {
+        return response;
+      } else {
+        throw Exception();
+      }
     } catch (e) {
       log('error deleting data from api: $e');
     }
@@ -37,11 +43,16 @@ class UnoImpl extends ApiService {
   @override
   Future get(String url, {Map<String, dynamic>? queryParams}) async {
     try {
-      return await _uno.get(
+      final response = await _uno.get(
         url,
         params: (queryParams ?? {}) as Map<String, String>,
         headers: await _getHeaders(),
       );
+      if (response.status == 200) {
+        return response;
+      } else {
+        throw Exception();
+      }
     } catch (e) {
       log('error deleting data from api: $e');
     }
@@ -50,7 +61,13 @@ class UnoImpl extends ApiService {
   @override
   Future post(String url, {Map<String, dynamic>? body}) async {
     try {
-      return await _uno.post(url, data: body, headers: await _getHeaders());
+      final response =
+          await _uno.post(url, data: body, headers: await _getHeaders());
+      if (response.status == 200 || response.status == 201) {
+        return response;
+      } else {
+        throw Exception();
+      }
     } catch (e) {
       log('error deleting data from api: $e');
     }
@@ -59,11 +76,16 @@ class UnoImpl extends ApiService {
   @override
   Future update(String url, {Map<String, dynamic>? body}) async {
     try {
-      return await _uno.patch(
+      final response = await _uno.patch(
         url,
         data: body,
         headers: await _getHeaders(),
       );
+      if (response.status == 200) {
+        return response;
+      } else {
+        throw Exception();
+      }
     } catch (e) {
       log('error deleting data from api: $e');
     }
