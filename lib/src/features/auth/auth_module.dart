@@ -6,13 +6,14 @@ import 'package:things_stuff_client/src/features/auth/ui/pages/login_page.dart';
 
 class AuthModule extends Module {
   @override
-  List<Bind> get exportedBinds => [
-        AutoBind.factory<AuthService>(FirebaseAuthService.new),
-        AutoBind.singleton(AuthReducers.new),
-      ];
+  void exportedBinds(Injector i) {
+    i
+      ..add<AuthService>(FirebaseAuthService.new)
+      ..addSingleton(AuthReducers.new);
+  }
 
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute('/login', child: (_, __) => const LoginPage()),
-      ];
+  void routes(RouteManager r) {
+    r.child('/login', child: (ctx) => const LoginPage());
+  }
 }

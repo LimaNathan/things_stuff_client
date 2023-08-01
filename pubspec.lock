@@ -53,10 +53,10 @@ packages:
     dependency: transitive
     description:
       name: auto_injector
-      sha256: "46e13571c0be473f6976d0c5d41cedec340630e03b5df9b486883059a69a3969"
+      sha256: da17c99bd1ea92fb2ed442f76812792cdb5de914d74b276a00add42b1e561251
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.4"
+    version: "1.1.0+4"
   boolean_selector:
     dependency: transitive
     description:
@@ -194,10 +194,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_modular
-      sha256: a1f0971b736dcee7521af08ba05c8b8a1e762ff4330af553743765e030baeae3
+      sha256: a4c56acc3b98a177a670cf0d5ac8def6cd1dadb12882a38bdee3d04235c45436
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0-beta.5"
+    version: "6.0.0+2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -324,10 +324,10 @@ packages:
     dependency: transitive
     description:
       name: modular_core
-      sha256: f3d1f7885190128828e8378558ed545244405ca87e4acf69e9cd2a0728df3d4d
+      sha256: e71c80b381a5c2825dc342c1b276dd4c92f4f6eced08a59222529081624b371a
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0-beta.5"
+    version: "3.0.0+1"
   node_preamble:
     dependency: transitive
     description:

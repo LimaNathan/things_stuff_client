@@ -1,3 +1,5 @@
 {
-  "cmake.configureOnOpen": true
+  "cmake.configureOnOpen": true,
+    "dart.flutterSdkPath": "/Users/nathanlima/.puro/envs/newest/flutter",
+    "dart.sdkPath": "/Users/nathanlima/.puro/envs/newest/flutter/bin/cache/dart-sdk"
 }

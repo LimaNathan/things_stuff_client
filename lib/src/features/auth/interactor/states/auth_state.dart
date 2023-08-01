@@ -8,7 +8,6 @@ class LoadingAuth implements AuthState {}
 
 class Logged implements AuthState {
   final Tokenization token;
-
   Logged(this.token);
 }
 

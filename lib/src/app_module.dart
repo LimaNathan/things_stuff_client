@@ -9,24 +9,26 @@ class AppModule extends Module {
   List<Module> get imports => [
         AuthModule(),
       ];
-  @override
-  List<Bind<Object>> get binds => [
-        Bind.instance<FirebaseAuth>(FirebaseAuth.instance),
-      ];
 
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute(
-          '/splash',
-          child: (_, __) => const SplashPage(),
-        ),
-        ModuleRoute(
-          '/auth',
-          module: AuthModule(),
-        ),
-        ModuleRoute(
-          '/things',
-          module: ThingsModule(),
-        ),
-      ];
+  void binds(Injector i) {
+    i.addInstance<FirebaseAuth>(FirebaseAuth.instance);
+  }
+
+  @override
+  void routes(RouteManager r) {
+    r
+      ..child(
+        '/splash',
+        child: (ctx) => const SplashPage(),
+      )
+      ..module(
+        '/auth',
+        module: AuthModule(),
+      )
+      ..module(
+        '/things',
+        module: ThingsModule(),
+      );
+  }
 }
