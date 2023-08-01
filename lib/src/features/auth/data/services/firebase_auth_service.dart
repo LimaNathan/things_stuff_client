@@ -10,7 +10,10 @@ class FirebaseAuthService extends AuthService {
   FirebaseAuthService(this.firebase);
   @override
   Future<AuthState> checkAuth() async {
-    final token = await firebase.currentUser?.getIdToken();
+    final token =
+        await firebase.currentUser?.getIdToken().onError((error, stackTrace) {
+      return null;
+    });
     if (token == null) {
       return Unlogged();
     } else {

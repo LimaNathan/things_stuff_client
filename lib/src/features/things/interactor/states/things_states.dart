@@ -10,3 +10,13 @@ class ShowingThings implements ThingsState {
   final List<ThingDTO> things;
   ShowingThings(this.things);
 }
+
+class CreatedThing implements ThingsState {
+  final ThingDTO dto;
+  CreatedThing(this.dto);
+}
+
+class NotCreatedThing implements ThingsState {
+  final String message;
+  NotCreatedThing(this.message);
+}

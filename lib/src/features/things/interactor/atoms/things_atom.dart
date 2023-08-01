@@ -1,6 +1,6 @@
 import 'package:asp/asp.dart';
-import 'package:things_stuff_client/src/features/things/interactor/states/things_states.dart';
 import 'package:things_stuff_client/src/features/things/interactor/dto/thing_dto.dart';
+import 'package:things_stuff_client/src/features/things/interactor/states/things_states.dart';
 
 ///Atom
 final atomState = Atom<ThingsState>(

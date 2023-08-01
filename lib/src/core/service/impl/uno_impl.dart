@@ -5,24 +5,30 @@ import 'package:things_stuff_client/src/core/service/api_service.dart';
 import 'package:uno/uno.dart';
 
 class UnoImpl extends ApiService {
-  final Uno _uno = Uno();
+  late final Uno _uno = Uno();
   final FirebaseAuth firebase;
 
-  UnoImpl(this.firebase) {
-    var token = '';
-    firebase.currentUser?.getIdToken().then(
-          (value) => token = value ?? '',
-        );
-
-    _uno.headers.addAll(
-      {'Authorization': 'Bearer $token'},
-    );
+  Future<Map<String, String>> _getHeaders() async {
+    final token = await firebase.currentUser?.getIdToken();
+    final headers = <String, String>{};
+    if (token != null) {
+      headers.addAll({'Authorization': 'Bearer $token'});
+    }
+    return headers;
   }
+
+  UnoImpl(this.firebase);
 
   @override
   Future delete(String url, {required int id}) async {
     try {
-      return await _uno.delete(url, params: {'id': '$id'});
+      return await _uno.delete(
+        url,
+        params: {
+          'id': '$id',
+        },
+        headers: await _getHeaders(),
+      );
     } catch (e) {
       log('error deleting data from api: $e');
     }
@@ -34,6 +40,7 @@ class UnoImpl extends ApiService {
       return await _uno.get(
         url,
         params: (queryParams ?? {}) as Map<String, String>,
+        headers: await _getHeaders(),
       );
     } catch (e) {
       log('error deleting data from api: $e');
@@ -43,10 +50,7 @@ class UnoImpl extends ApiService {
   @override
   Future post(String url, {Map<String, dynamic>? body}) async {
     try {
-      return await _uno.post(
-        url,
-        data: body,
-      );
+      return await _uno.post(url, data: body, headers: await _getHeaders());
     } catch (e) {
       log('error deleting data from api: $e');
     }
@@ -55,7 +59,11 @@ class UnoImpl extends ApiService {
   @override
   Future update(String url, {Map<String, dynamic>? body}) async {
     try {
-      return await _uno.patch(url, data: body);
+      return await _uno.patch(
+        url,
+        data: body,
+        headers: await _getHeaders(),
+      );
     } catch (e) {
       log('error deleting data from api: $e');
     }
