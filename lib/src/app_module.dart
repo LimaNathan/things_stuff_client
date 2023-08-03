@@ -6,12 +6,22 @@ import 'package:things_stuff_client/src/features/auth/auth_module.dart';
 import 'package:things_stuff_client/src/features/splash/ui/pages/splash_page.dart';
 import 'package:things_stuff_client/src/features/things/things_module.dart';
 
+import 'features/things/data/service/things_crud_service.dart';
+import 'features/things/interactor/service/crud_service.dart';
+
 class AppModule extends Module {
   @override
   List<Module> get imports => [
         AuthModule(),
         ThingsModule(),
       ];
+
+  @override
+  void exportedBinds(Injector i) {
+    super.exportedBinds(i);
+
+    i.addSingleton<CRUDService>(ThingsCRUD.new);
+  }
 
   @override
   void binds(Injector i) {

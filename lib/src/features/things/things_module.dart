@@ -9,7 +9,7 @@ class ThingsModule extends Module {
   @override
   void binds(Injector i) {
     i
-      ..addSingleton<CRUDService>(ThingsCRUD.new)
+    
       ..addSingleton(ThingsReducer.new);
   }
 
