@@ -3,22 +3,25 @@ import 'package:things_stuff_client/src/features/things/categories/interactor/dt
 import 'package:things_stuff_client/src/features/things/categories/interactor/states/categories_state.dart';
 
 ///Atom
-final atomState = Atom<CategoriesState>(
+final categoriesState = Atom<CategoriesState>(
   InitCategories(),
   key: 'CategoriesState',
 );
 
 ///Action
 
-final getCategories = Atom.action(key: 'getCategories');
-final sendNewCategories = Atom<CategoriesDTO>(
+final getCategoriesAction = Atom<int?>(null,key: 'getCategories');
+final sendNewCategoryAction = Atom<CategoriesDTO>(
   CategoriesDTO(),
   key: 'getCategories',
 );
 
-final updateCategories = Atom<CategoriesDTO>(
+final updateCategoryAction = Atom<CategoriesDTO>(
   CategoriesDTO(),
-  key: 'updateCategories ',
+  key: 'updateCategory ',
 );
 
-final deleteThing = Atom<CategoriesDTO>(CategoriesDTO(), key: 'deleteThing');
+final deleteCategoryAction = Atom<CategoriesDTO>(
+  CategoriesDTO(),
+  key: 'deleteThing',
+);

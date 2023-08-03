@@ -39,6 +39,11 @@ class ThingsCRUD extends CRUDService<ThingsState, ThingDTO> {
     try {
       final Response response = await api.get(Endpoints.getAllThings);
 
+      if (response.data == null) {
+        return ThingsErrorState(
+          'Nenhuma "coisa" cadastrada',
+        );
+      }
       final things = (response.data as List)
           .map(
             (e) => ThingDTO.fromMap(e),
@@ -47,7 +52,7 @@ class ThingsCRUD extends CRUDService<ThingsState, ThingDTO> {
 
       return ShowingThings(things);
     } catch (e) {
-      return ThingsErrorState();
+      return ThingsErrorState(e.toString());
     }
   }
 

@@ -10,7 +10,8 @@ final thingState = Atom<ThingsState>(
 
 ///Action
 
-final getThingsAction = Atom.action(key: 'getThings');
+final getThingsAction = Atom.action();
+
 final getOneThingAction = Atom<int?>(
   null,
   key: 'getOneThing',
