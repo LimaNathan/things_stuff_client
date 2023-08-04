@@ -34,6 +34,7 @@ class _AppWidgetState extends State<AppWidget> {
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
+        useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
       routerConfig: Modular.routerConfig,

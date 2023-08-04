@@ -37,7 +37,7 @@ class ThingsReducer extends Reducer {
 
     thingState.value = LoadingThings();
     final dto = sendNewThingsAction.value;
-    service.createNew(dto).then((value) => thingState.setValue(value));
+    service.createNew(dto).then((value) => _getThings());
   }
 
   void _updateThings() {

@@ -1,1 +1,1 @@
-abstract class DTO {}
+interface class DTO {}

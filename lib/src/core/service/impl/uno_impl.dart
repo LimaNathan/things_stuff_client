@@ -4,9 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:things_stuff_client/src/core/service/api_service.dart';
 import 'package:uno/uno.dart';
 
-class UnoImpl extends ApiService {
+class UnoImpl implements ApiService {
   late final Uno _uno = Uno();
+
   final FirebaseAuth firebase;
+  UnoImpl(this.firebase);
 
   Future<Map<String, String>> _getHeaders() async {
     final token = await firebase.currentUser?.getIdToken();
@@ -16,8 +18,6 @@ class UnoImpl extends ApiService {
     }
     return headers;
   }
-
-  UnoImpl(this.firebase);
 
   @override
   Future delete(String url, {required int id}) async {
@@ -45,7 +45,7 @@ class UnoImpl extends ApiService {
     try {
       final response = await _uno.get(
         url,
-        params: (queryParams ?? {}) as Map<String, String>,
+        params: (queryParams ?? <String, String>{}) as Map<String, String>,
         headers: await _getHeaders(),
       );
       if (response.status == 200) {

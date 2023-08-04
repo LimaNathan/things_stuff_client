@@ -1,12 +1,12 @@
 // ignore_for_file: unnecessary_lambdas
 
 import 'package:asp/asp.dart';
-import 'package:things_stuff_client/src/features/things/categories/interactor/atoms/categories_atom.dart';
-import 'package:things_stuff_client/src/features/things/categories/interactor/states/categories_state.dart';
-import 'package:things_stuff_client/src/features/things/interactor/service/crud_service.dart';
+import 'package:things_stuff_client/src/features/categories/data/categories_crud.dart';
+import 'package:things_stuff_client/src/features/categories/interactor/atoms/categories_atom.dart';
+import 'package:things_stuff_client/src/features/categories/interactor/states/categories_state.dart';
 
 class CategoriesReducer extends Reducer {
-  final CRUDService service;
+  final CategoriesCRUD service;
 
   CategoriesReducer(this.service) {
     on(() => [getCategoriesAction], _getCategories);
@@ -19,8 +19,6 @@ class CategoriesReducer extends Reducer {
     categoriesState.value = LoadingCategories();
     service.getAll().then((value) => categoriesState.setValue(value));
   }
-
-
 
   void _sendNewCategories() {
     categoriesState.value = LoadingCategories();

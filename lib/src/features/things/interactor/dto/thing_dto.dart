@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:things_stuff_client/src/features/things/categories/interactor/dto/category.dart';
+import 'package:things_stuff_client/src/features/categories/interactor/dto/category.dart';
 import 'package:things_stuff_client/src/features/things/interactor/entities/dto.dart';
 
-class ThingDTO extends DTO {
+class ThingDTO implements DTO {
   int? id;
   String? name;
   String? image;
@@ -33,23 +33,24 @@ class ThingDTO extends DTO {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'image': image,
-      'approximateValue': approximateValue,
-      'category': category?.toMap(),
-      'categoryId': categoryId,
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (image != null) 'image': image,
+      if (approximateValue != null) 'approximateValue': approximateValue,
+      if (category != null) 'category': category!.toMap(),
+      if (categoryId != null) 'categoryId': categoryId,
     };
   }
 
   factory ThingDTO.fromMap(Map<String, dynamic> map) {
     return ThingDTO()
-      ..id = map['id'] as int
-      ..name = map['name'] as String
-      ..image = map['image'] as String
-      ..approximateValue = map['approximateValue'] as double
-      ..category =
-          CategoriesDTO.fromMap(map['category'] as Map<String, dynamic>)
+      ..id = map['id']
+      ..name = map['name']
+      ..image = map['image']
+      ..approximateValue = double.parse(map['approximateValue'])
+      ..category = map.containsKey('category')
+          ? CategoriesDTO.fromMap(map['category'])
+          : null
       ..categoryId = map['categoryId'];
   }
 

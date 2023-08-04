@@ -2,21 +2,24 @@
 
 import 'package:things_stuff_client/src/core/service/api_service.dart';
 import 'package:things_stuff_client/src/features/things/interactor/dto/thing_dto.dart';
+import 'package:things_stuff_client/src/features/things/interactor/entities/dto.dart';
 import 'package:things_stuff_client/src/features/things/interactor/service/crud_service.dart';
 import 'package:things_stuff_client/src/features/things/interactor/states/things_states.dart';
 import 'package:things_stuff_client/src/shared/utils/endpoints.dart';
 import 'package:uno/uno.dart';
 
-class ThingsCRUD extends CRUDService<ThingsState, ThingDTO> {
+class ThingsCRUD extends CRUDService<ThingsState> {
   final ApiService api;
 
   ThingsCRUD(this.api);
   @override
-  Future<ThingsState> createNew(ThingDTO dto) async {
+  Future<ThingsState> createNew(DTO dto) async {
+    dto as ThingDTO;
     try {
+      final body = dto.toMap();
       final Response response = await api.post(
         Endpoints.createNewThing,
-        body: dto.toMap(),
+        body: body,
       );
       return CreatedThing(ThingDTO.fromJson(response.data));
     } catch (e) {
@@ -69,7 +72,7 @@ class ThingsCRUD extends CRUDService<ThingsState, ThingDTO> {
   }
 
   @override
-  Future<ThingsState> update(ThingDTO dto) async {
+  Future<ThingsState> update(DTO dto) async {
     try {
       final Response response = await api.update(Endpoints.updateThingByID);
       return CreatedThing(ThingDTO.fromMap(response.data));

@@ -1,6 +1,6 @@
 import 'package:asp/asp.dart';
-import 'package:things_stuff_client/src/features/things/categories/interactor/dto/category.dart';
-import 'package:things_stuff_client/src/features/things/categories/interactor/states/categories_state.dart';
+import 'package:things_stuff_client/src/features/categories/interactor/dto/category.dart';
+import 'package:things_stuff_client/src/features/categories/interactor/states/categories_state.dart';
 
 ///Atom
 final categoriesState = Atom<CategoriesState>(

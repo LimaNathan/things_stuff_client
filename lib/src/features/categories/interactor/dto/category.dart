@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:things_stuff_client/src/features/things/interactor/entities/dto.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class CategoriesDTO extends DTO{
+class CategoriesDTO implements DTO {
   int? id;
   String? name;
 
@@ -27,8 +27,8 @@ class CategoriesDTO extends DTO{
 
   factory CategoriesDTO.fromMap(Map<String, dynamic> map) {
     return CategoriesDTO()
-      ..id = map['id'] as int
-      ..name = map['name'] as String;
+      ..id = map['id']
+      ..name = map['title'];
   }
 
   String toJson() => json.encode(toMap());

@@ -1,4 +1,6 @@
-import 'package:things_stuff_client/src/features/things/categories/interactor/dto/category.dart';
+// ignore_for_file: prefer_final_locals
+
+import 'package:things_stuff_client/src/features/categories/interactor/dto/category.dart';
 
 sealed class CategoriesState {
   T when<T>({
@@ -13,19 +15,14 @@ sealed class CategoriesState {
   }) {
     return switch (this) {
       InitCategories _ => initCategories(),
-      final LoadingCategories s =>
-        loadingCategories?.call(s) ?? initCategories(),
-      final ShowingCategories s =>
-        showingCategories?.call(s) ?? initCategories(),
-      final ShowingOneCategories s =>
-        showingOneCategory?.call(s) ?? initCategories(),
-      final CreatedCategories s => createCategory?.call(s) ?? initCategories(),
-      final CategoriesErrorState s =>
+      LoadingCategories s => loadingCategories?.call(s) ?? initCategories(),
+      ShowingCategories s => showingCategories?.call(s) ?? initCategories(),
+      ShowingOneCategories s => showingOneCategory?.call(s) ?? initCategories(),
+      CreatedCategories s => createCategory?.call(s) ?? initCategories(),
+      CategoriesErrorState s =>
         errotCategoriesState?.call(s) ?? initCategories(),
-      final DeleteCategoriesSuccess s =>
-        deleteCategory?.call(s) ?? initCategories(),
-      final NotCreatedCategories s =>
-        notCreatedCategory?.call(s) ?? initCategories(),
+      DeleteCategoriesSuccess s => deleteCategory?.call(s) ?? initCategories(),
+      NotCreatedCategories s => notCreatedCategory?.call(s) ?? initCategories(),
     };
   }
 }
