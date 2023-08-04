@@ -16,19 +16,25 @@ void main() {
 
   tearDownAll(reducer.dispose);
 
-  group('check auth | ', () {
-    test('Logged', () {
-      final logged = Logged(Tokenization(idToken: ''));
-      when(service.checkAuth).thenAnswer((_) async => logged);
+  group(
+    'check auth | ',
+    () {
+      test(
+        'Logged',
+        () {
+          final logged = Logged(Tokenization(idToken: ''));
+          when(service.checkAuth).thenAnswer((_) async => logged);
 
-      expect(
-        authState.buffer(2),
-        completion(
-          [isA<LoadingAuth>(), logged],
-        ),
+          expect(
+            authState.buffer(2),
+            completion(
+              [isA<LoadingAuth>(), logged],
+            ),
+          );
+
+          checkAuthAction();
+        },
       );
-
-      checkAuthAction();
-    });
-  });
+    },
+  );
 }
