@@ -1,7 +1,8 @@
 {
   "configurations": [
+
     {
-      "name": "Flutter",
+      "name": "frontend",
       "type": "dart",
       "request": "launch",
       "program": "lib/main.dart",

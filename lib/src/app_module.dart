@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:things_stuff_client/src/features/auth/auth_module.dart';
-import 'package:things_stuff_client/src/features/splash/ui/pages/splash_page.dart';
 import 'package:things_stuff_client/src/features/categories/categories_module.dart';
+import 'package:things_stuff_client/src/features/splash/ui/pages/splash_page.dart';
 import 'package:things_stuff_client/src/features/things/things_module.dart';
 
 import 'core/service/api_service.dart';
